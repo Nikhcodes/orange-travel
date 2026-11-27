@@ -1,0 +1,23 @@
+[project]
+name = "orange-travel"
+version = "1.0.0"
+description = "Orange Travel – Intelligent Travel Advisor: KNN-reisadvies (UNASAT studieproject, fictieve data)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "scikit-learn>=1.5",
+    "streamlit>=1.50",
+    "plotly>=6.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
