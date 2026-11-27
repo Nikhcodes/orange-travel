@@ -1,62 +1,66 @@
-# Zo werkt de reisadviseur van Orange Travel
+# Zo werkt Sabi, de reisadviseur van Orange Travel
 
-Weet je nog niet waar je heen wilt? **Lora**, onze oranje lovebird, helpt je in een paar klikken aan een passend reisadvies.
+Weet je nog niet welke tour je in Suriname wilt doen? **Sabi**, onze rotshaan, helpt je in een paar vragen aan een passend advies.
 
 ---
 
-## 1. Open de reisadviseur
+## 1. Open de chat
+Klik rechtsonder op de website op de ronde knop met Sabi. Het chatvenster opent en Sabi stelt zijn eerste vraag.
 
-Lora begroet je en stelt haar eerste vraag. Rechtsboven kies je de taal: **Nederlands** of **Sranan**.
+<img src="img/sabi-start.png" width="320" alt="Startscherm">
 
-![Startscherm](img/1_start.jpg)
+## 2. Beantwoord vier korte vragen
 
-## 2. Beantwoord vier vragen
-
-| Vraag | Wat je doet |
+| Sabi vraagt | Jij kiest |
 |---|---|
-| **Waar heb je zin in?** | Klik op *Strand*, *Natuur* of *Stad*. |
-| **Met wie ga je op reis?** | *Alleen*, *Met z'n tweeën*, *Met het gezin* of *Met vrienden*. Bij gezin of vrienden vul je daarna het aantal personen in. |
-| **Hoe lang wil je weg?** | Kies bijvoorbeeld *Een week · 7*, of *Ander aantal*. |
-| **Wat is je budget?** | Kies *Per persoon* of *Totaal voor de groep* en schuif naar je bedrag. Lora rekent het meteen voor je om. Klik daarna op **Zoek mijn reizen**. |
+| **Waar heb je zin in?** | 🏙️ *Stad & omgeving* · 🌿 *Binnenland & natuur* · 🗺️ *Rondreis* · of 🤔 *Ik twijfel*: dan legt Sabi het verschil uit |
+| **Met wie ga je op reis?** | Alleen, met z'n tweeën, met het gezin of met vrienden (en daarna met hoeveel personen) |
+| **Hoeveel tijd heb je?** | Van *een paar uur* tot *twee weken of langer* |
+| **Wat is je budget per persoon?** | Kies een bedrag, of typ je eigen bedrag |
 
-![Hoe lang wil je weg?](img/2_days.jpg)
-
-![Budget kiezen](img/3_budget.jpg)
-
-> **Liever typen?** Typ je wens onderaan in één zin, bijvoorbeeld:
-> *strand met mijn vriendin, 7 dagen, 1500 dollar*.
-> Lora haalt eruit wat ze begrijpt en vraagt alleen nog wat ontbreekt.
+**Liever typen?** Typ alles in één keer, bijvoorbeeld:
+*"binnenland, 3 dagen, met mijn vriendin, €400 per persoon"*.
+Sabi haalt eruit wat hij begrijpt en vraagt alleen nog wat ontbreekt. Van gedachten veranderd? Typ gewoon *"toch liever 2 dagen"*.
 
 ## 3. Bekijk je advies
+Je krijgt maximaal **drie tours** die binnen je budget passen.
 
-Je krijgt **maximaal drie reizen** die binnen je budget passen.
+<img src="img/sabi-advies.png" width="320" alt="Advies">
 
-![Jouw reisadvies](img/4_results.jpg)
+Op elk kaartje staat:
+- de **prijs per persoon** (vanafprijs) en het **totaal** voor je groep;
+- hoeveel budget je **overhoudt**;
+- **waarom** de tour past: ✓ betekent dat het klopt met je wens, **!** betekent dat iets afwijkt (bijvoorbeeld een minimum van 4 personen), en *i* is een tip;
+- de knop **Bekijk tour** naar de tourpagina van Orange Travel.
 
 | Label | Betekenis |
 |---|---|
-| ★ **Meest aanbevolen** | Past het best bij al je wensen samen. |
-| $ **Voordeligst** | De laagste prijs van deze drie. |
-| ☼ **Langst genieten** | De reis met de meeste dagen van deze drie. |
+| **Beste match** | Past het best bij al je wensen samen |
+| **Voordeligst** | De laagste prijs van de getoonde tours |
+| **Past deels** | Niet alles klopt; kijk naar de **!** |
 
-Op elke kaart zie je:
-- de **prijs per persoon** en, als je met meer mensen reist, het **totaal voor de groep**;
-- hoeveel budget je per persoon **overhoudt**;
-- **waarom** Lora deze reis kiest. Een ✓ betekent dat het klopt met je wens. Een **!** betekent dat iets afwijkt, bijvoorbeeld een reis die bedoeld is voor vrienden terwijl jij als stel reist.
+## 4. Vraag gerust door
+Klik op een knop of typ je vraag:
 
-Met de knoppen onder de kaarten kies je **Ander budget**, **Andere soort reis** of **Opnieuw beginnen**.
+| Je wilt… | Klik / typ |
+|---|---|
+| weten waarom | **Waarom deze?** |
+| opties naast elkaar zien | **Vergelijk** |
+| iets anders | **Andere opties**, *"iets goedkopers"*, *"iets rustigers"*, *"langer"* |
+| informatie over een tour | *"Hoeveel kost Awarradam?"*, *"Is Brownsberg zwaar?"*, *"Hoe kan ik betalen?"* |
+| een mens spreken | **Spreek een adviseur** |
 
-## 4. Geen reis binnen je budget?
+Bij informatie staat altijd een link **Bron: orangesuriname.com**. De website is leidend.
 
-Dan zegt Lora dat eerlijk. Een reis die duurder is dan je budget raadt ze **nooit** aan. Ter informatie noemt ze wel de goedkoopste reis van die soort, zodat je weet hoeveel extra budget nodig is. Met één klik op **Budget naar …** zoek je opnieuw met dat bedrag.
+<img src="img/sabi-vergelijk.png" width="320" alt="Vergelijken">
 
-![Geen advies binnen budget](img/5_noresult.jpg)
+## 5. Te laag budget?
+Past er niets binnen je budget, dan zegt Sabi dat eerlijk. Hij laat de goedkoopste opties zien, duidelijk gemarkeerd als **boven je budget**. Met één klik op **Budget naar €…** zoek je opnieuw.
 
-## 5. Goed om te weten
+<img src="img/sabi-boven-budget.png" width="320" alt="Boven budget">
 
-- Alle prijzen zijn **indicatief** en gelden **per persoon**.
-- Dit is een **advies**. Boeken, betalen, vluchten, visum en beschikbaarheid regel je met een medewerker van het reisbureau.
-- Lora slaat geen persoonsgegevens op. Na het sluiten van de pagina is je gesprek weg.
-
----
-*Studieproject UNASAT. De bestemmingen en prijzen in deze reisadviseur zijn verzonnen.*
+## 6. Goed om te weten
+- **Sabi geeft advies en boekt niets.** Boeken doe je via de knop *Book now* op de tourpagina of via een reisadviseur: +597 421984 / +597 8773397 (ma–vr 8:00–19:00, za 12:00–19:00).
+- **Deel geen persoonsgegevens** zoals je naam, e-mailadres of telefoonnummer. Sabi heeft ze niet nodig en verwijdert ze automatisch.
+- Sabi bewaart je gesprek niet. Sluit je de pagina, dan is het weg.
+- Prijzen zijn *vanafprijzen* per persoon en kunnen veranderen.

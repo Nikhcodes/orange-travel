@@ -1,0 +1,463 @@
+tekst,intent
+hallo,groet
+hoi,groet
+goedemorgen,groet
+goedemiddag,groet
+goedenavond,groet
+hey daar,groet
+hallo sabi,groet
+hoi hoi,groet
+dag,groet
+fa waka,groet
+fa yu tan,groet
+hello,groet
+hi there,groet
+goeiedag,groet
+yo,groet
+hallo is daar iemand,groet
+hey,groet
+morgen,groet
+heey sabi,groet
+"hallo, ik heb een vraag",groet
+hoi daar,groet
+goede morgen allemaal,groet
+ik wil naar het binnenland,voorkeur
+ik zoek een stadstour,voorkeur
+iets in paramaribo graag,voorkeur
+mijn budget is 200 euro,voorkeur
+we hebben ongeveer 500 euro per persoon,voorkeur
+ik wil 3 dagen weg,voorkeur
+een dagtrip graag,voorkeur
+een paar uurtjes maar,voorkeur
+ik ga met mijn vriendin,voorkeur
+"we zijn met het gezin, 2 kinderen",voorkeur
+ik reis alleen,voorkeur
+met 4 vrienden,voorkeur
+toch liever 2 dagen,voorkeur
+doe maar binnenland,voorkeur
+nee toch de stad,voorkeur
+we willen een rondreis van twee weken,voorkeur
+budget is nu 1000,voorkeur
+ik heb 150 euro,voorkeur
+"liever iets korters, een dag",voorkeur
+we zijn met z'n vijven,voorkeur
+jungle tour voor 4 dagen met mijn vrouw,voorkeur
+mijn man en ik willen de natuur in,voorkeur
+ik zoek een rondreis voor het gezin,voorkeur
+max 300 euro p.p.,voorkeur
+met mijn ouders en kinderen,voorkeur
+we hebben een week de tijd,voorkeur
+ik wil iets met boten en rivieren in de buurt van de stad,voorkeur
+"natuur, 2 dagen, 400 euro",voorkeur
+"binnenland met vrienden, budget 600",voorkeur
+we zijn met zijn tweeën,voorkeur
+i want a jungle trip of 3 days,voorkeur
+budget 800 dollar,voorkeur
+mi wani go na busi,voorkeur
+iets avontuurlijks in de jungle,voorkeur
+wat is inbegrepen bij awarradam,tour_vraag
+hoe lang duurt de brownsberg tour,tour_vraag
+is lunch inbegrepen,tour_vraag
+kan je zwemmen bij brownsberg,tour_vraag
+wanneer zijn de zeeschildpadden te zien,tour_vraag
+hoe kom ik bij peperpot,tour_vraag
+wat moet ik meenemen naar het binnenland,tour_vraag
+hoe kan ik betalen,tour_vraag
+kan ik met creditcard betalen,tour_vraag
+wat zijn jullie openingstijden,tour_vraag
+waar is jullie kantoor,tour_vraag
+wat is jullie telefoonnummer,tour_vraag
+vertrekt de commewijne tour elke dag,tour_vraag
+is de kayak tour zwaar,tour_vraag
+moet ik fit zijn voor de raleighvallen,tour_vraag
+hoeveel kost de dolfijnen tour,tour_vraag
+wat houdt de fishing tour in,tour_vraag
+zijn er muggen in het binnenland,tour_vraag
+hoe groot zijn de groepen,tour_vraag
+is vervoer inbegrepen,tour_vraag
+kan ik een tour op maat laten maken,tour_vraag
+wat is de minimum groepsgrootte voor brownsberg,tour_vraag
+welke valuta gebruiken jullie,tour_vraag
+hoe werkt betalen via de bank,tour_vraag
+wat is kabalebo,tour_vraag
+vertel meer over anaula,tour_vraag
+waar ligt galibi,tour_vraag
+wat voor accommodatie heeft jaw jaw,tour_vraag
+hoe ver is brokopondo van paramaribo,tour_vraag
+is de turtle tour geschikt voor kinderen,tour_vraag
+what is included in the awarradam trip,tour_vraag
+kan ik in euro betalen,tour_vraag
+wat is het verschil tussen deze reizen,vergelijken
+wat is het verschil tussen 1 en 2,vergelijken
+vergelijk de opties,vergelijken
+welke is beter,vergelijken
+welke van deze drie past het best,vergelijken
+welke raad je het meest aan,vergelijken
+wat is het verschil tussen awarradam en anaula,vergelijken
+welke is goedkoper van de twee,vergelijken
+zet ze naast elkaar,vergelijken
+optie 1 of optie 3,vergelijken
+welke moet ik kiezen,vergelijken
+welke van de drie is het leukst voor kinderen,vergelijken
+wat zijn de verschillen,vergelijken
+kun je ze vergelijken,vergelijken
+welke is het minst zwaar,vergelijken
+welke is het langst,vergelijken
+which one is best,vergelijken
+is de eerste beter dan de tweede,vergelijken
+hoe verschillen ze van elkaar,vergelijken
+welke van deze tours heeft de beste prijs,vergelijken
+waarom raad je dit aan,waarom
+waarom deze tour,waarom
+waarom die eerste,waarom
+waarom niet iets anders,waarom
+hoe kom je bij dit advies,waarom
+waarom past dit bij mij,waarom
+leg uit waarom,waarom
+waarom staat deze bovenaan,waarom
+waarom is dit de beste,waarom
+waarom krijg ik een stadstour als ik binnenland wil,waarom
+hoezo deze,waarom
+waarom zou ik dit kiezen,waarom
+why this one,waarom
+waarom adviseer je dit,waarom
+wat maakt deze geschikt,waarom
+waarom geen rondreis,waarom
+hoe heb je dit bepaald,waarom
+op basis waarvan kies je dit,waarom
+andere opties,meer_opties
+heb je nog iets anders,meer_opties
+laat meer zien,meer_opties
+ik ben niet tevreden,meer_opties
+dit vind ik niks,meer_opties
+nee dit spreekt me niet aan,meer_opties
+iets goedkopers,meer_opties
+heb je iets goedkoper,meer_opties
+kan het goedkoper,meer_opties
+iets langers graag,meer_opties
+korter graag,meer_opties
+meer keuze,meer_opties
+toon andere reizen,meer_opties
+niet wat ik zoek,meer_opties
+dat is te duur,meer_opties
+geen van deze,meer_opties
+volgende opties,meer_opties
+nog meer tours,meer_opties
+heb je alternatieven,meer_opties
+ik wil iets anders,meer_opties
+show me other options,meer_opties
+mag het iets avontuurlijker,meer_opties
+iets rustigers graag,meer_opties
+ik twijfel tussen stad en binnenland,twijfel_type
+ik weet niet wat ik wil,twijfel_type
+wat raad je aan stad of natuur,twijfel_type
+binnenland of stad wat is leuker,twijfel_type
+ik twijfel,twijfel_type
+wat is het verschil tussen een rondreis en een tour,twijfel_type
+geen idee wat ik moet kiezen,twijfel_type
+help me kiezen tussen jungle en stad,twijfel_type
+wat zou jij doen,twijfel_type
+is binnenland of een rondreis beter voor ons,twijfel_type
+ik weet nog niet welke soort reis,twijfel_type
+wat is leuk om te doen in suriname,twijfel_type
+wat kan ik allemaal doen,twijfel_type
+kun je me advies geven over het soort reis,twijfel_type
+waar moet ik heen als het mijn eerste keer is,twijfel_type
+wat is het verschil tussen stad en omgeving en binnenland,twijfel_type
+geen idee eigenlijk,twijfel_type
+wat past bij mij,twijfel_type
+ik wil boeken,boeken
+kan ik dit reserveren,boeken
+boek deze tour voor mij,boeken
+reserveer awarradam voor 2 personen,boeken
+ik wil annuleren,boeken
+kan je mijn boeking annuleren,boeken
+ik wil mijn reservering wijzigen,boeken
+hoe boek ik dit,boeken
+kan ik via jou betalen,boeken
+zet mij op de lijst,boeken
+ik wil deze tour vastleggen,boeken
+plaats een boeking,boeken
+book this for me,boeken
+ik wil betalen,boeken
+annuleer mijn tour van morgen,boeken
+kan je een plek vrijhouden,boeken
+ik wil een offerte,boeken
+kun je beschikbaarheid checken voor zaterdag,boeken
+is er nog plek op 12 december,boeken
+reserveren graag,boeken
+kan ik iemand spreken,medewerker
+ik wil een medewerker,medewerker
+bel mij terug,medewerker
+verbind me door,medewerker
+ik wil met een mens praten,medewerker
+is er een reisadviseur beschikbaar,medewerker
+kan ik jullie bellen,medewerker
+contact met een medewerker,medewerker
+ik wil een echte persoon,medewerker
+kun je me doorverwijzen,medewerker
+ik wil langskomen op kantoor,medewerker
+whatsapp nummer,medewerker
+hoe neem ik contact op,medewerker
+talk to a human,medewerker
+ik wil iemand van orange travel spreken,medewerker
+mag ik een afspraak maken,medewerker
+bedankt,bedankt_doei
+dankjewel,bedankt_doei
+thanks,bedankt_doei
+super bedankt,bedankt_doei
+top dank je,bedankt_doei
+doei,bedankt_doei
+tot ziens,bedankt_doei
+dat was het,bedankt_doei
+oke bedankt,bedankt_doei
+fijn dankje,bedankt_doei
+"mooi, bye",bedankt_doei
+gran tangi,bedankt_doei
+tangi,bedankt_doei
+thank you,bedankt_doei
+ok top,bedankt_doei
+dank u wel,bedankt_doei
+perfect dankje,bedankt_doei
+dat is alles,bedankt_doei
+opnieuw beginnen,opnieuw
+begin opnieuw,opnieuw
+reset,opnieuw
+start opnieuw,opnieuw
+alles opnieuw,opnieuw
+van voren af aan,opnieuw
+nieuwe zoekopdracht,opnieuw
+ik wil opnieuw,opnieuw
+wis alles,opnieuw
+restart,opnieuw
+nieuw gesprek,opnieuw
+begin maar weer,opnieuw
+wie ben jij,over_bot
+wat ben jij,over_bot
+ben je een robot,over_bot
+wat kun je,over_bot
+wat kan je allemaal,over_bot
+hoe werk jij,over_bot
+ben jij een mens,over_bot
+wie is sabi,over_bot
+waarom heet je sabi,over_bot
+wat betekent sabi,over_bot
+ben je ai,over_bot
+wat doe jij precies,over_bot
+wat is het weer morgen,buiten_scope
+vertel een grap,buiten_scope
+wie wint het wk,buiten_scope
+wat is 2 plus 2,buiten_scope
+kun je mijn huiswerk maken,buiten_scope
+wat is de hoofdstad van frankrijk,buiten_scope
+schrijf een gedicht,buiten_scope
+hoe laat is het,buiten_scope
+wat vind jij van politiek,buiten_scope
+waar kan ik goed eten in paramaribo,buiten_scope
+hoe duur is een vliegticket naar suriname,buiten_scope
+heb ik een visum nodig,buiten_scope
+welk hotel raad je aan in amsterdam,buiten_scope
+wat is bitcoin,buiten_scope
+kun je een auto huren voor me,buiten_scope
+hoe maak ik roti,buiten_scope
+speel muziek af,buiten_scope
+wat is de wisselkoers,buiten_scope
+goedendag,groet
+hallo daar,groet
+heyy,groet
+hoi sabi,groet
+"hey, ben je er",groet
+halloo,groet
+goeie morgen,groet
+hi,groet
+hello sabi,groet
+goedemiddag sabi,groet
+hee,groet
+morning,groet
+"hallo, goedemorgen",groet
+"hoi, ik ben op zoek naar hulp",groet
+odi,groet
+fa yu de,groet
+we zijn met 6 vrienden,voorkeur
+mijn vrouw en ik,voorkeur
+ik heb een week vakantie,voorkeur
+het mag niet meer dan 100 euro kosten,voorkeur
+we willen iets in de stad doen,voorkeur
+liever de natuur in,voorkeur
+een tour van een halve dag,voorkeur
+we hebben 3 kinderen,voorkeur
+ik wil een weekend weg,voorkeur
+budget rond de 250,voorkeur
+we hebben in totaal 2000 euro,voorkeur
+ik ben solo,voorkeur
+city tour,voorkeur
+rondreis door suriname,voorkeur
+voor 2 personen,voorkeur
+met mijn familie,voorkeur
+we zijn een groep van 8,voorkeur
+een dag de jungle in,voorkeur
+4 dagen binnenland,voorkeur
+liever 5 dagen,voorkeur
+onder de 50 euro,voorkeur
+max 1500 per persoon,voorkeur
+hoeveel kost awarradam,tour_vraag
+wat kost de commewijne tour,tour_vraag
+is er wifi in de lodge,tour_vraag
+hoe laat vertrekken jullie,tour_vraag
+waar vertrekt de dolfijnentour,tour_vraag
+moet je kunnen zwemmen,tour_vraag
+is brownsberg geschikt voor ouderen,tour_vraag
+wat is het adres van orange travel,tour_vraag
+zijn jullie open op zaterdag,tour_vraag
+wat zijn de openingstijden op zaterdag,tour_vraag
+hoe lang is de vlucht naar palumeu,tour_vraag
+wat eet je tijdens de tour,tour_vraag
+kan ik pinnen,tour_vraag
+hoe zit het met betalen met dollars,tour_vraag
+wat is peperpot,tour_vraag
+waar ligt raleighvallen,tour_vraag
+hebben jullie een kantoor in nederland,tour_vraag
+hoe ver is het naar awarradam,tour_vraag
+wat voor kleding moet ik aan,tour_vraag
+is er een maximum aantal deelnemers,tour_vraag
+wanneer is het schildpaddenseizoen,tour_vraag
+zijn er kinderkortingen,tour_vraag
+welke is het beste voor ons,vergelijken
+wat is het verschil in prijs,vergelijken
+welke duurt het kortst,vergelijken
+welke van de drie,vergelijken
+vergelijk optie 1 en 2,vergelijken
+wat zijn de voor en nadelen,vergelijken
+"tussen de eerste en de laatste, welke",vergelijken
+leg het verschil uit,vergelijken
+welke is avontuurlijker,vergelijken
+welke is het meest geschikt voor kinderen,vergelijken
+wat raad jij aan van deze drie,vergelijken
+welke heeft de meeste activiteiten,vergelijken
+welke is rustiger,vergelijken
+verschil tussen nummer 2 en 3,vergelijken
+waarom die,waarom
+waarom de tweede,waarom
+waarom de derde optie,waarom
+waarom zo duur,waarom
+waarom raad je een tour van 2 dagen aan,waarom
+waarom past deze niet helemaal,waarom
+wat bedoel je met past niet helemaal,waarom
+waarom dit advies,waarom
+waarom krijg ik deze,waarom
+waarom niet de goedkoopste,waarom
+kun je uitleggen waarom,waarom
+waarom staat er een uitroepteken,waarom
+waarom geen jungle tour,waarom
+goedkoper graag,meer_opties
+te duur,meer_opties
+het is te duur voor ons,meer_opties
+iets voordeliger,meer_opties
+heb je ook kortere tours,meer_opties
+langere reis graag,meer_opties
+nog andere ideeen,meer_opties
+wat heb je nog meer,meer_opties
+anders,meer_opties
+niet goed,meer_opties
+dit is het niet,meer_opties
+andere suggesties,meer_opties
+meer tours graag,meer_opties
+nog een paar opties,meer_opties
+laat de volgende zien,meer_opties
+iets met minder lopen,meer_opties
+wat avontuurlijker,meer_opties
+liever iets relaxter,meer_opties
+ik kan niet kiezen,twijfel_type
+wat zou je aanraden voor een eerste bezoek,twijfel_type
+wat is het verschil tussen de soorten reizen,twijfel_type
+ik weet niet of ik stad of jungle wil,twijfel_type
+help,twijfel_type
+wat zijn de opties,twijfel_type
+welke soorten tours zijn er,twijfel_type
+wat voor reizen hebben jullie,twijfel_type
+ik heb geen idee waar ik heen wil,twijfel_type
+wat is populair,twijfel_type
+wat doen de meeste mensen,twijfel_type
+kun je iets voorstellen,twijfel_type
+verras me,twijfel_type
+ik wil iets leuks maar weet niet wat,twijfel_type
+ik wil een reservering maken,boeken
+boek maar,boeken
+kan ik nu boeken,boeken
+voor wanneer kan ik boeken,boeken
+ik wil deze nemen,boeken
+zet het vast,boeken
+ik wil een tour kopen,boeken
+hoe kan ik reserveren,boeken
+annuleren aub,boeken
+ik wil mijn boeking veranderen,boeken
+kan je de datum wijzigen,boeken
+ik wil een aanbetaling doen,boeken
+stuur me een factuur,boeken
+ik wil 3 plekken,boeken
+ik wil een gesprek met een adviseur,medewerker
+kan ik bellen,medewerker
+telefonisch contact,medewerker
+kan iemand mij helpen,medewerker
+ikzelf wil liever iemand spreken,medewerker
+verbinden met kantoor,medewerker
+kan ik mailen,medewerker
+wat is jullie emailadres,medewerker
+ik wil een terugbelverzoek,medewerker
+hoe bereik ik jullie,medewerker
+kan ik langskomen,medewerker
+medewerker graag,medewerker
+liever een echte adviseur,medewerker
+kan ik een afspraak inplannen,medewerker
+dankje,bedankt_doei
+danku,bedankt_doei
+bedankt voor je hulp,bedankt_doei
+thanks sabi,bedankt_doei
+toppie,bedankt_doei
+ok dankjewel,bedankt_doei
+tot later,bedankt_doei
+bye,bedankt_doei
+doeidoei,bedankt_doei
+"ik ga het bekijken, bedankt",bedankt_doei
+helemaal goed,bedankt_doei
+super,bedankt_doei
+nice dankje,bedankt_doei
+cheers,bedankt_doei
+opnieuw,opnieuw
+reset alles,opnieuw
+begin vanaf het begin,opnieuw
+nieuwe reis zoeken,opnieuw
+ik wil helemaal opnieuw,opnieuw
+start over,opnieuw
+alles wissen,opnieuw
+opnieuw zoeken,opnieuw
+vergeet alles,opnieuw
+terug naar het begin,opnieuw
+bigin baka,opnieuw
+nog een keer van voor af,opnieuw
+wie heeft jou gemaakt,over_bot
+ben je een chatbot,over_bot
+hoe slim ben je,over_bot
+wat voor vogel ben jij,over_bot
+ben je echt,over_bot
+hoe heet jij,over_bot
+wat is jouw naam,over_bot
+ben jij een rotshaan,over_bot
+kan je alles,over_bot
+wat weet jij,over_bot
+hoe werkt dit,over_bot
+wie ben je eigenlijk,over_bot
+wie is de president van suriname,buiten_scope
+wat is je lievelingskleur,buiten_scope
+kun je code schrijven,buiten_scope
+hoe word ik rijk,buiten_scope
+wat is de beste telefoon,buiten_scope
+hoeveel kost een hotel in paramaribo,buiten_scope
+waar kan ik uitgaan vanavond,buiten_scope
+hoe laat is de zonsondergang,buiten_scope
+kan je mijn vliegticket boeken,buiten_scope
+heb ik vaccinaties nodig,buiten_scope
+wat is het beste restaurant,buiten_scope
+hoe ga ik naar het vliegveld,buiten_scope
+vertel iets grappigs,buiten_scope
+wat is het nieuws vandaag,buiten_scope

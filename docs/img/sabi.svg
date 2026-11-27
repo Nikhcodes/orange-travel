@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Sabi de rotshaan">
+  <defs>
+    <radialGradient id="sabiBody" cx="0.62" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#FFA03C"/><stop offset="0.7" stop-color="#F47A1F"/><stop offset="1" stop-color="#E0620F"/>
+    </radialGradient>
+    <radialGradient id="sabiCrest" cx="0.55" cy="0.75" r="0.8">
+      <stop offset="0" stop-color="#FFAA4A"/><stop offset="1" stop-color="#F57C1C"/>
+    </radialGradient>
+  </defs>
+  <g class="sabi-all">
+    <ellipse class="sabi-shadow" cx="60" cy="113" rx="24" ry="4" fill="#153147" opacity=".15"/>
+    <g class="sabi-tail">
+      <path d="M40 86 C28 96 22 106 24 113 C34 111 44 102 50 92 Z" fill="#4A2410"/>
+      <path d="M24 113 C28 110 31 107 33 104 C30 110 28 112 24 113Z" fill="#F47A1F"/>
+    </g>
+    <path class="sabi-feet" d="M52 101 l-3 8 M52 101 l1 8 M64 102 l-1 8 M64 102 l3 8" stroke="#E9A23B" stroke-width="3" stroke-linecap="round"/>
+    <g class="sabi-body">
+      <path d="M62 30 C86 30 97 52 93 74 C89 95 72 104 57 103 C40 102 31 88 34 70 C37 50 42 30 62 30Z" fill="url(#sabiBody)"/>
+      <path d="M70 60 C84 66 87 82 79 94 C71 101 61 99 59 92 C64 82 63 70 70 60Z" fill="#FFB35A" opacity=".55"/>
+    </g>
+    <g class="sabi-wing">
+      <path d="M46 56 C31 63 29 86 42 97 C52 95 59 83 58 69 C57 61 52 55 46 56Z" fill="#3E1F0D"/>
+      <path d="M47 60 C40 67 38 80 42 89" stroke="#F47A1F" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <path d="M53 64 C50 72 49 82 46 90" stroke="#E08A2E" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
+      <path d="M44 96 l-3 7 M48 95 l-1 8 M52 93 l1 8" stroke="#F6C64B" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+    <g class="sabi-crest">
+      <path d="M42 42 C38 16 62 2 84 8 C99 12 108 28 104 46 C96 41 84 39 72 41 C60 43 50 46 42 42Z" fill="url(#sabiCrest)"/>
+      <path d="M46 37 C46 17 65 8 83 12 C95 15 102 27 101 40" stroke="#A3410E" stroke-width="2" fill="none" opacity=".55"/>
+      <path d="M58 16 C62 12 70 10 76 11" stroke="#FFD08A" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+    </g>
+    <path class="sabi-beak" d="M100 45 C104 46 107 48 108 50 C104 51 101 51 98 50Z" fill="#F7C548"/>
+    <g class="sabi-eye">
+      <circle cx="79" cy="48" r="7.5" fill="#FFE3A3"/>
+      <circle cx="80" cy="48" r="4.6" fill="#1C140F"/>
+      <circle cx="81.6" cy="46.4" r="1.6" fill="#FFFFFF"/>
+    </g>
+    <ellipse class="sabi-cheek" cx="86" cy="60" rx="5" ry="3" fill="#FF6B4A" opacity=".35"/>
+  </g>
+</svg>

@@ -1,17 +1,21 @@
-"""Feature engineering: turn destinations and customers into comparable number vectors.
+"""Feature engineering: turn tours and customer wishes into comparable number vectors.
 
-Every destination and every customer becomes the same vector:
+Every tour and every customer becomes the same 9-number vector:
 
-    [prijs_scaled, dagen_scaled,
-     soort_Strand, soort_Natuur, soort_Stad,
-     geschikt_voor_Alleen, geschikt_voor_Stel, geschikt_voor_Gezin, geschikt_voor_Vrienden]
+    [prijs, duur,                                   <- log-transformed, then StandardScaler
+     type_Stad & omgeving, type_Binnenland & natuur, type_Rondreis,          <- one-hot (pd.get_dummies)
+     gezelschap_Alleen, gezelschap_Stel, gezelschap_Gezin, gezelschap_Vrienden]
 
-Two rules prevent the classic training/prediction mismatch:
-    1. The StandardScaler is fitted ONLY on the destination dataset and then
-       reused (transform, never fit) for every customer.
-    2. One-hot columns are built with pd.get_dummies() on a Categorical with a
-       FIXED list of categories and then reindexed to the stored column order,
-       so a single customer row always gets all 7 one-hot columns.
+Design choices (see docs/technische_documentatie.md):
+- Price and duration are log-transformed first. A difference between a 3-hour and a
+  1-day tour matters more than between a 15- and 16-day round trip; the same holds
+  for €30 vs €90 compared with €1,900 vs €1,960.
+- A tour can suit several travel companions (multi-hot). Those ones are divided by
+  their count, so a tour that suits everyone is not pushed away from every customer.
+- The StandardScaler is fitted on the tours only and reused for every customer.
+- One-hot columns come from pd.get_dummies on a Categorical with a FIXED category list,
+  then are reindexed to the stored column order: a single customer row always gets
+  exactly the same columns as the tours (no feature mismatch).
 """
 
 from dataclasses import dataclass
@@ -22,137 +26,97 @@ from sklearn.preprocessing import StandardScaler
 
 from src import config
 
-# Feature groups: used for weighting, ablation (research question 1) and
-# for explaining which part of the profile caused the distance.
-GROUP_PRICE = "prijs"
-GROUP_DAYS = "dagen"
-GROUP_CATEGORY = "soort"
-GROUP_COMPANION = "gezelschap"
-FEATURE_GROUPS = [GROUP_PRICE, GROUP_DAYS, GROUP_CATEGORY, GROUP_COMPANION]
-
-DEFAULT_WEIGHTS: dict[str, float] = {group: 1.0 for group in FEATURE_GROUPS}
+GROUP_PRICE, GROUP_DURATION, GROUP_TYPE, GROUP_COMPANION = "prijs", "duur", "type", "gezelschap"
+FEATURE_GROUPS = [GROUP_PRICE, GROUP_DURATION, GROUP_TYPE, GROUP_COMPANION]
+NEUTRAL_WEIGHTS = {group: 1.0 for group in FEATURE_GROUPS}
 
 
 @dataclass
 class CustomerProfile:
-    """The four customer preferences, already validated by the engine."""
+    """A validated customer wish. Budget is per person in euro."""
 
     budget: float
-    days: int
-    category: str
+    days: float
+    tour_type: str
     companion: str
+    travelers: int = 1
+
+
+def tour_midpoint_days(tours: pd.DataFrame) -> pd.Series:
+    return (tours[config.COL_DAYS_MIN] + tours[config.COL_DAYS_MAX]) / 2
 
 
 def _one_hot(values: pd.Series, allowed: list[str], prefix: str) -> pd.DataFrame:
-    """One-hot encode with pd.get_dummies using a fixed category list.
-
-    Making the column categorical with all allowed values guarantees that
-    get_dummies creates a column for every value, even if it does not occur
-    in ``values`` (for example a single customer row).
-    """
     categorical = pd.Categorical(values, categories=allowed)
     return pd.get_dummies(categorical, prefix=prefix, dtype=float)
 
 
 class FeaturePreprocessor:
-    """Fits on the destination dataset and transforms destinations and customers identically.
+    """Fits on the tours and transforms tours and customers identically.
 
     Args:
-        use_price: include price in the distance (Model A = True, Model B = False).
-        weights: optional multiplier per feature group. A weight w multiplies the
-            feature values, so the group's contribution to the squared distance
-            is multiplied by w². Weight 0 removes the group (ablation).
+        weights: multiplier per feature group. A weight w multiplies the features, so the
+            group's share of the squared distance is multiplied by w². Weight 0 removes it.
     """
 
-    def __init__(self, use_price: bool = True, weights: dict[str, float] | None = None) -> None:
-        self.use_price = use_price
-        self.weights = {**DEFAULT_WEIGHTS, **(weights or {})}
-        if not use_price:
-            self.weights[GROUP_PRICE] = 0.0
-
+    def __init__(self, weights: dict[str, float] | None = None) -> None:
+        self.weights = {**NEUTRAL_WEIGHTS, **(weights or {})}
         unknown = set(self.weights) - set(FEATURE_GROUPS)
         if unknown:
             raise ValueError(f"Onbekende featuregroep(en): {sorted(unknown)}")
-
         self.scaler = StandardScaler()
         self.feature_columns: list[str] = []
         self.column_groups: dict[str, str] = {}
-        self._is_fitted = False
+        self._fitted = False
 
-    # ------------------------------------------------------------------ fit
-    def fit(self, destinations: pd.DataFrame) -> "FeaturePreprocessor":
-        """Learn mean/std of price and days and fix the feature column order."""
-        self.scaler.fit(destinations[[config.COL_PRICE, config.COL_DAYS]].astype(float))
-
-        category_cols = [f"{config.COL_CATEGORY}_{c}" for c in config.CATEGORIES]
-        companion_cols = [f"{config.COL_COMPANION}_{c}" for c in config.COMPANIONS]
-        self.feature_columns = [config.COL_PRICE, config.COL_DAYS, *category_cols, *companion_cols]
-
-        self.column_groups = {config.COL_PRICE: GROUP_PRICE, config.COL_DAYS: GROUP_DAYS}
-        self.column_groups.update({col: GROUP_CATEGORY for col in category_cols})
-        self.column_groups.update({col: GROUP_COMPANION for col in companion_cols})
-
-        self._is_fitted = True
+    def fit(self, tours: pd.DataFrame) -> "FeaturePreprocessor":
+        numeric = self._numeric(tours[config.COL_PRICE], tour_midpoint_days(tours))
+        self.scaler.fit(numeric)
+        type_cols = [f"type_{t}" for t in config.TYPES]
+        comp_cols = [f"gezelschap_{c}" for c in config.COMPANIONS]
+        self.feature_columns = [GROUP_PRICE, GROUP_DURATION, *type_cols, *comp_cols]
+        self.column_groups = {GROUP_PRICE: GROUP_PRICE, GROUP_DURATION: GROUP_DURATION,
+                              **{c: GROUP_TYPE for c in type_cols}, **{c: GROUP_COMPANION for c in comp_cols}}
+        self._fitted = True
         return self
 
-    # ------------------------------------------------------------ transform
-    def _build(self, price: pd.Series, days: pd.Series, category: pd.Series, companion: pd.Series) -> pd.DataFrame:
-        """Shared transformation for destinations and customers (no duplicate logic)."""
-        if not self._is_fitted:
-            raise RuntimeError("FeaturePreprocessor moet eerst gefit worden op de bestemmingen.")
+    @staticmethod
+    def _numeric(price: pd.Series, days: pd.Series) -> pd.DataFrame:
+        return pd.DataFrame({
+            GROUP_PRICE: np.log1p(price.astype(float).to_numpy()),
+            GROUP_DURATION: np.log2(days.astype(float).to_numpy()),
+        })
 
-        numeric = pd.DataFrame({config.COL_PRICE: price.astype(float), config.COL_DAYS: days.astype(float)})
+    def _finish(self, numeric: pd.DataFrame, type_part: pd.DataFrame, companion_part: pd.DataFrame) -> pd.DataFrame:
+        if not self._fitted:
+            raise RuntimeError("FeaturePreprocessor moet eerst gefit worden op de tours.")
         scaled = pd.DataFrame(self.scaler.transform(numeric), columns=numeric.columns)
-
-        features = pd.concat(
-            [
-                scaled,
-                _one_hot(category, config.CATEGORIES, config.COL_CATEGORY),
-                _one_hot(companion, config.COMPANIONS, config.COL_COMPANION),
-            ],
-            axis=1,
-        )
-        # Safety net: same columns, same order as during fit.
+        features = pd.concat([scaled, type_part.reset_index(drop=True), companion_part.reset_index(drop=True)], axis=1)
         features = features.reindex(columns=self.feature_columns, fill_value=0.0)
-
         for column, group in self.column_groups.items():
-            features[column] *= self.weights[group]
+            features[column] = features[column] * self.weights[group]
         return features
 
-    def transform_destinations(self, destinations: pd.DataFrame) -> pd.DataFrame:
-        """Feature matrix for all destinations (one row per destination)."""
-        return self._build(
-            destinations[config.COL_PRICE].reset_index(drop=True),
-            destinations[config.COL_DAYS].reset_index(drop=True),
-            destinations[config.COL_CATEGORY].reset_index(drop=True),
-            destinations[config.COL_COMPANION].reset_index(drop=True),
-        )
+    def transform_tours(self, tours: pd.DataFrame) -> pd.DataFrame:
+        numeric = self._numeric(tours[config.COL_PRICE], tour_midpoint_days(tours))
+        type_part = _one_hot(tours[config.COL_TYPE].reset_index(drop=True), config.TYPES, "type")
+        multi_hot = tours[list(config.COMPANION_COLUMNS.values())].astype(float).reset_index(drop=True)
+        multi_hot = multi_hot.div(multi_hot.sum(axis=1), axis=0)              # normalise: sums to 1
+        multi_hot.columns = [f"gezelschap_{c}" for c in config.COMPANIONS]
+        return self._finish(numeric, type_part, multi_hot)
 
     def transform_customer(self, customer: CustomerProfile) -> pd.DataFrame:
-        """Feature vector (1 row) for a customer.
+        """The budget goes into the price dimension: 'a trip around this price level'."""
+        numeric = self._numeric(pd.Series([customer.budget]), pd.Series([customer.days]))
+        type_part = _one_hot(pd.Series([customer.tour_type]), config.TYPES, "type")
+        companion_part = _one_hot(pd.Series([customer.companion]), config.COMPANIONS, "gezelschap")
+        return self._finish(numeric, type_part, companion_part)
 
-        The budget is placed in the price dimension: we interpret it as the
-        price level the customer is willing to pay (design decision 1).
-        """
-        return self._build(
-            pd.Series([customer.budget]),
-            pd.Series([customer.days]),
-            pd.Series([customer.category]),
-            pd.Series([customer.companion]),
-        )
-
-    # ------------------------------------------------------------- explain
-    def distance_breakdown(self, customer_vector: np.ndarray, destination_vector: np.ndarray) -> dict[str, float]:
-        """Split the squared Euclidean distance into one share per feature group.
-
-        Returns the fraction (0–1) of the total squared distance caused by each
-        group. Used for explanations and for research question 1.
-        """
-        squared = (customer_vector - destination_vector) ** 2
-        totals = {group: 0.0 for group in FEATURE_GROUPS}
+    def distance_breakdown(self, customer_vector: np.ndarray, tour_vector: np.ndarray) -> dict[str, float]:
+        """Share (0–1) of the squared distance caused by each feature group."""
+        squared = (customer_vector - tour_vector) ** 2
+        totals = {g: 0.0 for g in FEATURE_GROUPS}
         for value, column in zip(squared, self.feature_columns):
             totals[self.column_groups[column]] += float(value)
         total = sum(totals.values())
-        if total == 0:
-            return totals
-        return {group: value / total for group, value in totals.items()}
+        return {g: (v / total if total else 0.0) for g, v in totals.items()}

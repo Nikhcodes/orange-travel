@@ -1,0 +1,61 @@
+wens_id,budget_eur,dagen,type,gezelschap,personen,soort_wens,verwacht,motivatie,set
+W01,25.0,1.0,Stad & omgeving,Gezin,4,geen resultaat,GEEN,Niets binnen €25 p.p.; goedkoopste is Dolphin spotting in Suriname (€27.5).,ontwikkel
+W02,20.0,4.5,Binnenland & natuur,Stel,2,geen resultaat,GEEN,Niets binnen €20 p.p.; goedkoopste is Dolphin spotting in Suriname (€27.5).,ontwikkel
+W03,795.0,12.0,Rondreis,Gezin,5,conflict,Gran Rio Sintiadam Expedition,30 tour(s) binnen budget; duur wijkt iets af; andere soort (Binnenland & natuur); niet specifiek voor dit gezelschap.,ontwikkel
+W04,155.0,0.5,Stad & omgeving,Alleen,1,standaard,Dolphin spotting in Suriname,14 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W05,1415.0,2.5,Binnenland & natuur,Gezin,5,standaard,Maratakka,37 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W06,1470.0,7.0,Rondreis,Stel,2,conflict,Kabalebo Nature Resort,37 tour(s) binnen budget; duur past; andere soort (Binnenland & natuur); past bij gezelschap.,ontwikkel
+W07,165.0,1.0,Stad & omgeving,Alleen,1,standaard,Sendang Redjo Eco Retreat Daytrip,14 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W08,445.0,2.5,Binnenland & natuur,Vrienden,2,standaard,Maratakka,28 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W09,1305.0,16.0,Rondreis,Vrienden,2,gezelschap ontbreekt,16-day adventurous individual round trip,35 tour(s) binnen budget; duur past; juiste soort reis; niet specifiek voor dit gezelschap.,ontwikkel
+W10,70.0,0.5,Stad & omgeving,Gezin,3,standaard,Peperpot Nocturnal Adventure,6 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W11,475.0,7.0,Binnenland & natuur,Alleen,1,conflict,Jaw Jaw A Tela,28 tour(s) binnen budget; duur wijkt iets af; juiste soort reis; past bij gezelschap.,ontwikkel
+W12,1605.0,16.0,Rondreis,Gezin,4,standaard,Family Roundtrip in Suriname,38 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W13,185.0,1.0,Stad & omgeving,Stel,2,standaard,Sendang Redjo Eco Retreat Daytrip,18 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W14,255.0,4.5,Binnenland & natuur,Gezin,5,conflict,Galibi Urusji Lodge,21 tour(s) binnen budget; duur wijkt iets af; juiste soort reis; past bij gezelschap.,ontwikkel
+W15,2355.0,9.0,Rondreis,Alleen,1,gezelschap ontbreekt,Get the most out of 9 days Suriname,42 tour(s) binnen budget; duur past; juiste soort reis; niet specifiek voor dit gezelschap.,ontwikkel
+W16,165.0,1.0,Stad & omgeving,Stel,2,standaard,Sendang Redjo Eco Retreat Daytrip,14 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W17,1465.0,2.5,Binnenland & natuur,Stel,2,standaard,Fredberg Jungle Adventure,37 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W18,1835.0,12.0,Rondreis,Vrienden,6,gezelschap ontbreekt,Solo Traveler Express Suriname,38 tour(s) binnen budget; duur past; juiste soort reis; niet specifiek voor dit gezelschap.,ontwikkel
+W19,145.0,2.5,Stad & omgeving,Gezin,3,conflict,Sendang Redjo Eco Retreat Daytrip,14 tour(s) binnen budget; duur wijkt sterk af; juiste soort reis; past bij gezelschap.,ontwikkel
+W20,895.0,4.5,Binnenland & natuur,Vrienden,2,standaard,Palumeu Jungle Lodge Suriname,32 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W21,1775.0,7.0,Rondreis,Alleen,1,conflict,Kabalebo Nature Resort,38 tour(s) binnen budget; duur past; andere soort (Binnenland & natuur); past bij gezelschap.,ontwikkel
+W22,60.0,0.5,Stad & omgeving,Stel,2,krap budget,Peperpot bus tour,2 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W23,1280.0,4.5,Binnenland & natuur,Vrienden,2,standaard,Palumeu Jungle Lodge Suriname,35 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W24,2265.0,9.0,Rondreis,Gezin,3,gezelschap ontbreekt,Get the most out of 9 days Suriname,42 tour(s) binnen budget; duur past; juiste soort reis; niet specifiek voor dit gezelschap.,ontwikkel
+W25,155.0,0.5,Stad & omgeving,Gezin,5,standaard,Cooking with nature,14 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W26,1270.0,2.5,Binnenland & natuur,Vrienden,3,standaard,Maratakka,35 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W27,2395.0,7.0,Rondreis,Vrienden,6,conflict,Kabalebo Nature Resort,42 tour(s) binnen budget; duur past; andere soort (Binnenland & natuur); past bij gezelschap.,ontwikkel
+W28,210.0,2.5,Stad & omgeving,Alleen,1,gezelschap ontbreekt,Plantation Frederiksdorp Resort,19 tour(s) binnen budget; duur past; juiste soort reis; niet specifiek voor dit gezelschap.,ontwikkel
+W29,860.0,4.5,Binnenland & natuur,Stel,2,standaard,Palumeu Jungle Lodge Suriname,32 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,ontwikkel
+W30,675.0,7.0,Rondreis,Stel,2,conflict,Gran Rio Sintiadam Expedition,30 tour(s) binnen budget; duur past; andere soort (Binnenland & natuur); niet specifiek voor dit gezelschap.,ontwikkel
+W31,15.0,2.5,Stad & omgeving,Alleen,1,geen resultaat,GEEN,Niets binnen €15 p.p.; goedkoopste is Dolphin spotting in Suriname (€27.5).,test
+W32,20.0,2.5,Binnenland & natuur,Vrienden,4,geen resultaat,GEEN,Niets binnen €20 p.p.; goedkoopste is Dolphin spotting in Suriname (€27.5).,test
+W33,2320.0,7.0,Rondreis,Vrienden,2,conflict,Kabalebo Nature Resort,42 tour(s) binnen budget; duur past; andere soort (Binnenland & natuur); past bij gezelschap.,test
+W34,35.0,0.5,Stad & omgeving,Vrienden,3,krap budget,Dolphin spotting in Suriname,1 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W35,1305.0,4.5,Binnenland & natuur,Vrienden,3,standaard,Palumeu Jungle Lodge Suriname,35 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W36,1905.0,16.0,Rondreis,Alleen,1,standaard,16-day adventurous individual round trip,38 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W37,60.0,0.5,Stad & omgeving,Gezin,3,krap budget,Peperpot bus tour,2 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W38,525.0,7.0,Binnenland & natuur,Alleen,1,conflict,Jaw Jaw A Tela,28 tour(s) binnen budget; duur wijkt iets af; juiste soort reis; past bij gezelschap.,test
+W39,1870.0,16.0,Rondreis,Stel,2,standaard,The Best of Suriname,38 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W40,170.0,1.0,Stad & omgeving,Gezin,3,standaard,Sendang Redjo Eco Retreat Daytrip,14 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W41,685.0,2.5,Binnenland & natuur,Gezin,4,standaard,Maratakka,30 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W42,2240.0,16.0,Rondreis,Gezin,3,standaard,Family Roundtrip in Suriname,42 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W43,35.0,0.5,Stad & omgeving,Gezin,4,krap budget,Dolphin spotting in Suriname,1 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W44,1350.0,2.5,Binnenland & natuur,Stel,2,standaard,Fredberg Jungle Adventure,36 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W45,1350.0,16.0,Rondreis,Stel,2,standaard,The Best of Suriname,36 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W46,195.0,0.5,Stad & omgeving,Gezin,5,standaard,Cooking with nature,18 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W47,115.0,2.5,Binnenland & natuur,Alleen,1,conflict,Brokopondo day trip,14 tour(s) binnen budget; duur wijkt sterk af; juiste soort reis; past bij gezelschap.,test
+W48,905.0,9.0,Rondreis,Vrienden,6,standaard,Get the most out of 9 days Suriname,33 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W49,85.0,1.0,Stad & omgeving,Gezin,5,standaard,Plantation Laarwijk Agro Experience Tour,10 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W50,855.0,1.0,Binnenland & natuur,Alleen,1,standaard,Brokopondo day trip,32 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W51,2505.0,16.0,Rondreis,Stel,2,standaard,Group Round Trip Suriname,42 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W52,215.0,1.0,Stad & omgeving,Alleen,1,standaard,Sendang Redjo Eco Retreat Daytrip,20 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W53,815.0,4.5,Binnenland & natuur,Gezin,3,gezelschap ontbreekt,Palumeu Jungle Lodge Suriname,31 tour(s) binnen budget; duur past; juiste soort reis; niet specifiek voor dit gezelschap.,test
+W54,2445.0,16.0,Rondreis,Alleen,1,standaard,16-day adventurous individual round trip,42 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W55,40.0,1.0,Stad & omgeving,Vrienden,2,conflict,Dolphin spotting in Suriname,1 tour(s) binnen budget; duur wijkt iets af; juiste soort reis; past bij gezelschap.,test
+W56,915.0,1.0,Binnenland & natuur,Alleen,1,standaard,Brokopondo day trip,33 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W57,1365.0,16.0,Rondreis,Gezin,4,gezelschap ontbreekt,The Best of Suriname,36 tour(s) binnen budget; duur past; juiste soort reis; niet specifiek voor dit gezelschap.,test
+W58,55.0,0.5,Stad & omgeving,Alleen,1,krap budget,Dolphin spotting in Suriname,2 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W59,1100.0,4.5,Binnenland & natuur,Vrienden,4,standaard,Palumeu Jungle Lodge Suriname,33 tour(s) binnen budget; duur past; juiste soort reis; past bij gezelschap.,test
+W60,865.0,9.0,Rondreis,Alleen,1,gezelschap ontbreekt,Get the most out of 9 days Suriname,32 tour(s) binnen budget; duur past; juiste soort reis; niet specifiek voor dit gezelschap.,test

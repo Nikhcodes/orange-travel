@@ -1,19 +1,28 @@
 [project]
-name = "orange-travel"
-version = "1.0.0"
-description = "Orange Travel – Intelligent Travel Advisor: KNN-reisadvies (UNASAT studieproject, fictieve data)"
+name = "orange-travel-sabi"
+version = "2.0.0"
+description = "Sabi – AI-reisadviseur (chatwidget) voor Orange Travel Suriname. UNASAT-studieproject."
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [
+    { name = "Dwayne Danoeatmodjo" },
+    { name = "Jo-melly Amatbahrowi" },
+    { name = "Karan Ramnarain" },
+    { name = "Nikhiel Lingard" },
+    { name = "Riecha Mohab-Ali" },
+]
 dependencies = [
     "pandas>=2.2",
     "numpy>=2.0",
     "scikit-learn>=1.5",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
     "streamlit>=1.50",
     "plotly>=6.0",
 ]
 
 [dependency-groups]
-dev = ["pytest>=8.0"]
+dev = ["pytest>=8.0", "httpx>=0.27"]
 
 [tool.uv]
 package = false

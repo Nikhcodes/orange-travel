@@ -1,23 +1,18 @@
-"""Evaluation of the recommender against the predetermined test scenarios.
+"""Evaluation of the recommender against the predetermined test wishes.
 
-All percentages are calculated from the actual model output; nothing is
-hard-coded. The expected labels come from test_customers.csv and were fixed
-before the model existed (see scripts/validate_datasets.py for the rubric).
+All numbers are calculated from actual model output. Expected labels come from
+data/test_wishes.csv (rubric, see src/rubric.py) and were fixed before tuning.
 
-Metric definitions:
-    budget_compliance   share of ALL recommended items with price <= budget
-    category_match      share of ALL recommended items in the chosen category
+Metric definitions
+    budget_compliance   share of all RECOMMENDED tours with price <= budget (FR-12 alternatives
+                        are not recommendations and are counted separately as `n_over_budget_shown`)
+    type_match          share of all recommended tours of the requested type
     top3_hit            expected best is among the recommendations
-                        (for expected 'GEEN': the system returns zero recommendations)
+                        (expected 'GEEN': the bot gives zero recommendations)
     top1_hit            expected best is recommendation #1 (stricter, extra metric)
 
-Confusion matrices (assignment requirement):
-    relevance matrix    for every (wish, destination) pair: is the destination RELEVANT
-                        according to the rubric (affordable, right category, suitable for
-                        the companion if such a trip exists) versus is it RECOMMENDED
-                        (in the top 3)? -> TP / FP / FN / TN, precision, recall, F1.
-    companion matrix    desired travel companion versus the 'geschikt_voor' of the #1
-                        recommendation. Shows whether the model respects who you travel with.
+Confusion matrix (assignment requirement): for every (wish, tour) pair, is the tour
+RELEVANT according to the rubric (rules 1–4) versus RECOMMENDED (in the top 3)?
 """
 
 from dataclasses import dataclass
@@ -26,113 +21,80 @@ import pandas as pd
 
 from src import config
 from src.recommendation_engine import RecommendationEngine, validate_preferences
+from src.rubric import relevant_names
 
-# Assignment success criteria.
 REQUIRED_BUDGET_COMPLIANCE = 1.00
-REQUIRED_CATEGORY_MATCH = 0.90
+REQUIRED_TYPE_MATCH = 0.90
 REQUIRED_TOP3 = 0.80
 
 
 @dataclass
 class EvaluationSummary:
-    total_scenarios: int
+    total_wishes: int
     total_recommendations: int
+    over_budget_shown: int
     budget_compliance: float
-    category_match: float
+    type_match: float
     top3_hits: int
     top1_hits: int
 
     @property
     def top3_rate(self) -> float:
-        return self.top3_hits / self.total_scenarios
+        return self.top3_hits / self.total_wishes
 
     @property
     def top1_rate(self) -> float:
-        return self.top1_hits / self.total_scenarios
+        return self.top1_hits / self.total_wishes
 
     @property
     def passes_budget(self) -> bool:
         return self.budget_compliance >= REQUIRED_BUDGET_COMPLIANCE
 
     @property
-    def passes_category(self) -> bool:
-        return self.category_match >= REQUIRED_CATEGORY_MATCH
+    def passes_type(self) -> bool:
+        return self.type_match >= REQUIRED_TYPE_MATCH
 
     @property
     def passes_top3(self) -> bool:
         return self.top3_rate >= REQUIRED_TOP3
 
-    @property
-    def passes_all(self) -> bool:
-        return self.passes_budget and self.passes_category and self.passes_top3
 
-
-def evaluate_scenarios(engine: RecommendationEngine, scenarios: pd.DataFrame) -> pd.DataFrame:
-    """Run every scenario through the engine and return one result row per scenario."""
+def evaluate_wishes(engine: RecommendationEngine, wishes: pd.DataFrame) -> pd.DataFrame:
     rows = []
-    for _, scenario in scenarios.iterrows():
-        customer = validate_preferences(
-            scenario[config.COL_BUDGET],
-            int(scenario[config.COL_WISH_DAYS]),
-            scenario[config.COL_WISH_CATEGORY],
-            scenario[config.COL_WISH_COMPANION],
-        )
+    for _, wish in wishes.iterrows():
+        customer = validate_preferences(wish[config.COL_BUDGET], wish[config.COL_WISH_DAYS], wish[config.COL_WISH_TYPE],
+                                        wish[config.COL_WISH_COMPANION], wish.get(config.COL_TRAVELERS))
         result = engine.recommend(customer)
-        names = [rec.name for rec in result.recommendations]
-        expected = scenario.get(config.COL_EXPECTED, "?")
-
+        names = [r.name for r in result.recommendations]
+        expected = wish.get(config.COL_EXPECTED, "?")
         if expected == config.NO_RESULT_LABEL:
-            top3_hit = top1_hit = len(names) == 0
+            top3 = top1 = not names
         else:
-            top3_hit = expected in names
-            top1_hit = bool(names) and names[0] == expected
-
-        rows.append(
-            {
-                config.COL_SCENARIO_ID: scenario[config.COL_SCENARIO_ID],
-                config.COL_BUDGET: customer.budget,
-                config.COL_WISH_DAYS: customer.days,
-                config.COL_WISH_CATEGORY: customer.category,
-                config.COL_WISH_COMPANION: customer.companion,
-                config.COL_SCENARIO_TYPE: scenario.get(config.COL_SCENARIO_TYPE, "-"),
-                config.COL_SPLIT: scenario.get(config.COL_SPLIT, "-"),
-                config.COL_EXPECTED: expected,
-                "recommended": names,
-                "n_recommended": len(names),
-                "n_within_budget": sum(rec.price <= customer.budget for rec in result.recommendations),
-                "n_right_category": sum(rec.category == customer.category for rec in result.recommendations),
-                "top1": names[0] if names else config.NO_RESULT_LABEL,
-                "top1_hit": top1_hit,
-                "top3_hit": top3_hit,
-            }
-        )
+            top3, top1 = expected in names, bool(names) and names[0] == expected
+        rows.append({
+            config.COL_WISH_ID: wish.get(config.COL_WISH_ID, "-"),
+            config.COL_BUDGET: customer.budget, config.COL_WISH_DAYS: customer.days,
+            config.COL_WISH_TYPE: customer.tour_type, config.COL_WISH_COMPANION: customer.companion,
+            config.COL_TRAVELERS: customer.travelers,
+            config.COL_WISH_KIND: wish.get(config.COL_WISH_KIND, "-"), config.COL_SPLIT: wish.get(config.COL_SPLIT, "-"),
+            config.COL_EXPECTED: expected, "aanbevolen": names, "n_aanbevolen": len(names),
+            "n_binnen_budget": sum(r.price <= customer.budget for r in result.recommendations),
+            "n_juiste_type": sum(r.tour_type == customer.tour_type for r in result.recommendations),
+            "n_boven_budget_getoond": len(result.over_budget),
+            "plek1": names[0] if names else config.NO_RESULT_LABEL, "top1_hit": top1, "top3_hit": top3,
+        })
     return pd.DataFrame(rows)
 
 
 def summarize(results: pd.DataFrame) -> EvaluationSummary:
-    """Calculate the success metrics from the per-scenario results."""
-    total_recs = int(results["n_recommended"].sum())
-    # With zero recommendations there is nothing that can violate the rule.
-    budget = results["n_within_budget"].sum() / total_recs if total_recs else 1.0
-    category = results["n_right_category"].sum() / total_recs if total_recs else 1.0
+    n = int(results["n_aanbevolen"].sum())
     return EvaluationSummary(
-        total_scenarios=len(results),
-        total_recommendations=total_recs,
-        budget_compliance=float(budget),
-        category_match=float(category),
-        top3_hits=int(results["top3_hit"].sum()),
-        top1_hits=int(results["top1_hit"].sum()),
+        total_wishes=len(results), total_recommendations=n,
+        over_budget_shown=int(results["n_boven_budget_getoond"].sum()),
+        budget_compliance=float(results["n_binnen_budget"].sum() / n) if n else 1.0,
+        type_match=float(results["n_juiste_type"].sum() / n) if n else 1.0,
+        top3_hits=int(results["top3_hit"].sum()), top1_hits=int(results["top1_hit"].sum()),
     )
-
-
-def relevant_names(destinations: pd.DataFrame, budget: float, category: str, companion: str) -> set[str]:
-    """Destinations that are relevant for a wish according to the rubric (rules 1 and 2)."""
-    eligible = destinations[
-        (destinations[config.COL_CATEGORY] == category) & (destinations[config.COL_PRICE] <= budget)
-    ]
-    match = eligible[eligible[config.COL_COMPANION] == companion]
-    pool = match if not match.empty else eligible
-    return set(pool[config.COL_NAME])
 
 
 @dataclass
@@ -159,19 +121,18 @@ class RelevanceMatrix:
     def accuracy(self) -> float:
         return (self.tp + self.tn) / (self.tp + self.fp + self.fn + self.tn)
 
-    def as_frame(self, labels: tuple[str, str] = ("Aanbevolen", "Niet aanbevolen"),
-                 truth: tuple[str, str] = ("Relevant", "Niet relevant")) -> pd.DataFrame:
-        return pd.DataFrame([[self.tp, self.fn], [self.fp, self.tn]], index=list(truth), columns=list(labels))
+    def as_frame(self) -> pd.DataFrame:
+        return pd.DataFrame([[self.tp, self.fn], [self.fp, self.tn]],
+                            index=["Relevant", "Niet relevant"], columns=["Aanbevolen", "Niet aanbevolen"])
 
 
-def relevance_matrix(results: pd.DataFrame, destinations: pd.DataFrame) -> RelevanceMatrix:
-    """Count TP/FP/FN/TN over all (wish, destination) pairs."""
+def relevance_matrix(results: pd.DataFrame, tours: pd.DataFrame) -> RelevanceMatrix:
     tp = fp = fn = tn = 0
-    all_names = set(destinations[config.COL_NAME])
+    all_names = set(tours[config.COL_NAME])
     for _, row in results.iterrows():
-        relevant = relevant_names(destinations, row[config.COL_BUDGET], row[config.COL_WISH_CATEGORY],
-                                  row[config.COL_WISH_COMPANION])
-        recommended = set(row["recommended"])
+        relevant = relevant_names(tours, row[config.COL_BUDGET], row[config.COL_WISH_DAYS],
+                                  row[config.COL_WISH_TYPE], row[config.COL_WISH_COMPANION])
+        recommended = set(row["aanbevolen"])
         tp += len(relevant & recommended)
         fp += len(recommended - relevant)
         fn += len(relevant - recommended)
@@ -179,25 +140,7 @@ def relevance_matrix(results: pd.DataFrame, destinations: pd.DataFrame) -> Relev
     return RelevanceMatrix(tp, fp, fn, tn)
 
 
-def companion_matrix(results: pd.DataFrame, destinations: pd.DataFrame) -> pd.DataFrame:
-    """Rows: desired companion. Columns: 'geschikt_voor' of the #1 recommendation."""
-    companion_of = dict(zip(destinations[config.COL_NAME], destinations[config.COL_COMPANION]))
-    with_result = results[results["n_recommended"] > 0]
-    predicted = with_result["top1"].map(companion_of)
-    matrix = pd.crosstab(
-        pd.Categorical(with_result[config.COL_WISH_COMPANION], categories=config.COMPANIONS),
-        pd.Categorical(predicted, categories=config.COMPANIONS),
-        dropna=False,
-    )
-    matrix.index.name, matrix.columns.name = "gewenst", "plek 1 geschikt voor"
-    return matrix
-
-
-def results_by_type(results: pd.DataFrame) -> pd.DataFrame:
-    """Top-1 and top-3 hit rates per scenario type."""
-    grouped = results.groupby(config.COL_SCENARIO_TYPE).agg(
-        scenarios=(config.COL_SCENARIO_ID, "count"),
-        top1=("top1_hit", "mean"),
-        top3=("top3_hit", "mean"),
-    )
-    return grouped.reset_index().sort_values("scenarios", ascending=False)
+def results_by_kind(results: pd.DataFrame) -> pd.DataFrame:
+    grouped = results.groupby(config.COL_WISH_KIND).agg(
+        wensen=(config.COL_WISH_ID, "count"), top1=("top1_hit", "mean"), top3=("top3_hit", "mean"))
+    return grouped.reset_index().sort_values("wensen", ascending=False)

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sabi op de echte website · demo-bladwijzer</title>
+<link rel="icon" href="/widget/sabi.svg">
+<style>
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; color:#153147; background:#f7f4f0; }
+  main { max-width:760px; margin:40px auto; padding:0 22px; }
+  .card { background:#fff; border-radius:18px; padding:26px 28px; box-shadow:0 10px 30px rgba(21,49,71,.08); }
+  h1 { margin:0 0 6px; font-size:28px; } p { line-height:1.55; }
+  ol li { margin:10px 0; line-height:1.5; }
+  .bm { display:inline-flex; align-items:center; gap:10px; background:#f07913; color:#fff; font-weight:800; text-decoration:none;
+    padding:12px 18px; border-radius:12px; cursor:grab; box-shadow:0 8px 20px rgba(240,121,19,.35); }
+  .bm img { width:30px; }
+  .note { background:#eef4fb; border-left:4px solid #2e6db4; padding:12px 14px; border-radius:10px; font-size:14px; }
+  code { background:#f1ece6; padding:2px 6px; border-radius:6px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <h1>Sabi laten zien op orangesuriname.com</h1>
+    <p>Met deze bladwijzer zet je Sabi <b>alleen in je eigen browser</b> op de echte website van Orange Travel. Zo zie je precies
+      hoe de chatbot eruitziet als het bureau hem inbouwt. Er wordt niets aan hun website veranderd en niets gekopieerd.</p>
+    <p><a class="bm" id="bm" href="#"><img src="/widget/sabi.svg" alt=""> Sabi op deze pagina</a></p>
+    <ol>
+      <li>Zorg dat de bladwijzerbalk zichtbaar is (<code>Ctrl+Shift+B</code>).</li>
+      <li><b>Sleep</b> de oranje knop hierboven naar je bladwijzerbalk.</li>
+      <li>Laat deze server draaien (<code>uv run uvicorn src.api:app</code>).</li>
+      <li>Open <a href="https://www.orangesuriname.com/en/tours-in-suriname/" target="_blank" rel="noopener">orangesuriname.com</a>
+        en klik op de bladwijzer. Rechtsonder verschijnt Sabi.</li>
+    </ol>
+    <p class="note"><b>Werkt het niet?</b> Sommige browsers vragen of de website "apparaten op je lokale netwerk" mag gebruiken:
+      kies <i>Toestaan</i>. Blokkeert de site het toch, gebruik dan de <a href="/demo">demopagina</a>; die werkt altijd.</p>
+  </div>
+</main>
+<script>
+  var src = location.origin + "/widget/sabi.js";
+  document.getElementById("bm").href =
+    "javascript:(function(){if(window.__orangeSabiLoaded){window.OrangeSabi&&OrangeSabi.open();return;}" +
+    "var s=document.createElement('script');s.src='" + src + "';s.dataset.open='true';document.body.appendChild(s);})();";
+</script>
+</body>
+</html>

@@ -6,5 +6,6 @@ __pycache__/
 .streamlit/secrets.toml
 data/backups/
 .vscode/
+.idea/
 .DS_Store
 *.zip
